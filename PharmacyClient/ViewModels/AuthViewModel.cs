@@ -14,6 +14,15 @@ namespace PharmacyClient.ViewModels
         public string Login { get; set; }
         public string Password { get; set; }
         public static int role = 0;
+        public Users FindUser(string login, string password)
+        {
+            Users user = new Users();
+            using (AptekaEntities context = new AptekaEntities())
+            {
+                user = context.Users.Where(u => u.U_LOGIN == login && u.U_PASS == password).FirstOrDefault();
+            }
+            return user;
+        }
         private RelayCommand _signIn;
         public RelayCommand SignIn
         {
@@ -27,10 +36,7 @@ namespace PharmacyClient.ViewModels
                       Users currentUser = new Users();
                       if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
                       {
-                          using (AptekaEntities context = new AptekaEntities())
-                          {
-                              currentUser = context.Users.Where(u => u.U_LOGIN == login && u.U_PASS == password).FirstOrDefault();
-                          }
+                          currentUser = FindUser(login, password);
                           if (currentUser != null)
                           {
                               role = currentUser.U_ROLE;

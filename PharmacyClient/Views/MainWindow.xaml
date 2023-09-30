@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PharmacyClient"
         mc:Ignorable="d"
-        Title="Главное меню" Height="450" Width="800">
-    <Grid Background="DarkGray">
+        Title="Главное меню" Height="350" Width="700">
+    <Grid Background="#b5dbff">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -15,7 +15,7 @@
             <Style TargetType="Button">
                 <Style.Resources>
                     <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="15" />
+                        <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </Style.Resources>
                 <Setter Property="Height" Value="50"></Setter>
@@ -24,6 +24,8 @@
                 <Setter Property="Background" Value="Gainsboro"></Setter>
                 <Setter Property="FontFamily" Value="Arial"></Setter>
                 <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="Background" Value="#683ab7"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
             </Style>
         </Grid.Resources>
         <StackPanel Grid.Row="0" Orientation="Horizontal"

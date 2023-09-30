@@ -38,10 +38,9 @@
                     Grid.Row="5" Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button x:Name="btnSave" Content="Сохранить"
-                    IsDefault="True" Background="Gainsboro"
-                    Click="BtnSave_Click"></Button>
-            <Button x:Name="btnCancel" Content="Отмена"
-                    IsCancel="True" Background="Gainsboro"></Button>
+                    IsDefault="True" Click="BtnSave_Click"></Button>
+            <Button x:Name="btnCancel" Content="Отмена" 
+                    IsCancel="True"></Button>
         </StackPanel>
     </Grid>
 </Window>

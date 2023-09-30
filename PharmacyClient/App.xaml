@@ -5,10 +5,16 @@
              StartupUri="Views/AuthWindow.xaml">
     <Application.Resources>
         <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Style.Resources>
             <Setter Property="Height" Value="20"></Setter>
             <Setter Property="Width" Value="100"></Setter>
-            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="Background" Value="#683ab7"></Setter>
             <Setter Property="Margin" Value="5 5"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Right"></Setter>

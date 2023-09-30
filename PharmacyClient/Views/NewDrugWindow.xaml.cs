@@ -25,24 +25,7 @@ namespace PharmacyClient.Views
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder errors = new StringBuilder();
-            bool successPrice = double.TryParse(tbDrugPrice.Text, out double price);
-            if (string.IsNullOrEmpty(tbDrugName.Text))
-            {
-                errors.AppendLine("Введите название препарата");
-            }
-            if (string.IsNullOrEmpty(tbDrugForm.Text))
-            {
-                errors.AppendLine("Введите лекарственную форму");
-            }
-            if (string.IsNullOrEmpty(tbDrugDose.Text))
-            {
-                errors.AppendLine("Введите дозировку");
-            }
-            if (!successPrice || price <= 0)
-            {
-                errors.AppendLine("Неправильный ввод цены реализации");
-            }
+            StringBuilder errors = ErrorCheck(tbDrugName.Text, tbDrugForm.Text, tbDrugDose.Text, tbDrugPrice.Text);
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
@@ -51,6 +34,28 @@ namespace PharmacyClient.Views
             {
                 DialogResult = true;
             }
+        }
+        public StringBuilder ErrorCheck(string name, string form, string dose, string price)
+        {
+            StringBuilder err = new StringBuilder();
+            bool successPrice = double.TryParse(price, out double p);
+            if (string.IsNullOrEmpty(name))
+            {
+                err.AppendLine("Введите название препарата");
+            }
+            if (string.IsNullOrEmpty(form))
+            {
+                err.AppendLine("Введите лекарственную форму");
+            }
+            if (string.IsNullOrEmpty(dose))
+            {
+                err.AppendLine("Введите дозировку");
+            }
+            if (!successPrice || p <= 0)
+            {
+                err.AppendLine("Неправильный ввод цены реализации");
+            }
+            return err;
         }
     }
 }

@@ -7,7 +7,7 @@
         xmlns:ff="clr-namespace:PharmacyClient.Helpers"
         mc:Ignorable="d"
         Title="Авторизация" Height="250" Width="300">
-    <Grid Background="Gainsboro">
+    <Grid Background="#b5dbff">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
