@@ -1,0 +1,30 @@
+﻿<Window x:Class="PharmacyClient.Views.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        xmlns:ff="clr-namespace:PharmacyClient.Helpers"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="250" Width="300">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    Margin="10 10" HorizontalAlignment="Center">
+            <TextBlock Text="Логин:" HorizontalAlignment="Left"
+                       Margin="10 5"></TextBlock>
+            <TextBox x:Name="tbLogin" Width="250" Margin="10 5"
+                     Text="{Binding Login}"></TextBox>
+            <TextBlock Text="Пароль:" HorizontalAlignment="Left"
+                       Margin="10 5"></TextBlock>
+            <PasswordBox x:Name="PasswordBox" Width="250" 
+                         Margin="10 5" Height="30"
+                         ff:PasswordBoxAssistant.BindPassword="true" 
+                         ff:PasswordBoxAssistant.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+        </StackPanel>
+        <Button Grid.Row="2" Content="Войти" Command="{Binding SignIn}"></Button>
+    </Grid>
+</Window>

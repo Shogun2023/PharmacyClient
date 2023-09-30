@@ -1,0 +1,56 @@
+﻿<Window x:Class="PharmacyClient.Views.DrugsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="Препараты" Height="530" Width="900">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button Content="Добавить" Command="{Binding AddDrug}"></Button>
+            <Button Content="Редактировать" Command="{Binding EditDrug}"></Button>
+            <Button Content="Удалить" Command="{Binding DeleteDrug}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView ItemsSource="{Binding CollectionDrugs}" MaxHeight="400"
+                      SelectedItem="{Binding SelectedDrug}">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Код препарата"
+                                            DisplayMemberBinding="{Binding DR_ID}"/>
+                            <GridViewColumn Header="Название"
+                                            DisplayMemberBinding="{Binding DR_NAME}"/>
+                            <GridViewColumn Header="Код описания"
+                                            DisplayMemberBinding="{Binding DR_DESCR}"/>
+                            <GridViewColumn Header="Лекарственная форма"
+                                            DisplayMemberBinding="{Binding DR_FORM}"></GridViewColumn>
+                            <GridViewColumn Header="Дозировка"
+                                            DisplayMemberBinding="{Binding DR_DOSE}"/>
+                            <GridViewColumn Header="Цена реализации"
+                                            DisplayMemberBinding="{Binding DR_PRICE}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Grid.Row="2" Height="50">
+            <TextBlock Text="Поиск по названию:" Margin="5 0"></TextBlock>
+            <TextBox Height="20" Width="300" Margin="5 0" 
+                     Text="{Binding DrugFilter, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,56 @@
+﻿<Window x:Class="PharmacyClient.Views.UsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="Пользователи" Height="530" Width="600">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button Content="Добавить" Command="{Binding AddUser}"></Button>
+            <Button Content="Редактировать" Command="{Binding EditUser}"></Button>
+            <Button Content="Удалить" Command="{Binding DeleteUser}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView ItemsSource="{Binding CollectionUsersDTO}" MaxHeight="400"
+                      SelectedItem="{Binding SelectedUserDTO}">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Код пользователя"
+                                            DisplayMemberBinding="{Binding U_ID}"/>
+                            <GridViewColumn Header="Имя"
+                                            DisplayMemberBinding="{Binding U_NAME}"/>
+                            <GridViewColumn Header="Фамилия"
+                                            DisplayMemberBinding="{Binding U_SNAME}"/>
+                            <GridViewColumn Header="Логин"
+                                            DisplayMemberBinding="{Binding U_LOGIN}"/>
+                            <GridViewColumn Header="Пароль"
+                                            DisplayMemberBinding="{Binding U_PASS}"/>
+                            <GridViewColumn Header="Роль"
+                                            DisplayMemberBinding="{Binding U_ROLE_NAME}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Grid.Row="2" Height="50">
+            <TextBlock Text="Поиск по имени, фамилии или роли:" Margin="5 0"></TextBlock>
+            <TextBox Height="20" Width="300" Margin="5 0" 
+                    Text="{Binding UserFilter, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

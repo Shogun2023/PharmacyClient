@@ -1,0 +1,45 @@
+﻿<Window x:Class="PharmacyClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient"
+        mc:Ignorable="d"
+        Title="Главное меню" Height="450" Width="800">
+    <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15" />
+                    </Style>
+                </Style.Resources>
+                <Setter Property="Height" Value="50"></Setter>
+                <Setter Property="Width" Value="120"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="Background" Value="Gainsboro"></Setter>
+                <Setter Property="FontFamily" Value="Arial"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+            </Style>
+        </Grid.Resources>
+        <StackPanel Grid.Row="0" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Margin="0 0 0 10">
+            <Button Content="Препараты" Command="{Binding OpenDrugs}"></Button>
+            <Button Content="Реализация" Command="{Binding OpenSales}"></Button>
+            <Button Content="Хранение" Command="{Binding OpenStorage}"></Button>
+            <Button Content="Приходы" Command="{Binding OpenReceipts}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    Margin="0 10 0 0">
+            <Button Content="Поставщики" Command="{Binding OpenSuppliers}"></Button>
+            <Button Content="Описания" Command="{Binding OpenDescriptions}"></Button>
+            <Button Content="Пользователи" Command="{Binding OpenUsers}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

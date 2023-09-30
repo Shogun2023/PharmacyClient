@@ -1,0 +1,54 @@
+﻿<Window x:Class="PharmacyClient.Views.DescriptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="Описания" Height="530" Width="900">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button Content="Добавить" Command="{Binding AddDescription}"></Button>
+            <Button Content="Редактировать" Command="{Binding EditDescription}"></Button>
+            <Button Content="Удалить" Command="{Binding DeleteDescription}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView ItemsSource="{Binding CollectionDescriptions}" MaxHeight="400"
+                      SelectedItem="{Binding SelectedDescription}">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Код описания"
+                                            DisplayMemberBinding="{Binding DES_ID}"/>
+                            <GridViewColumn Header="Производитель" Width="150"
+                                            DisplayMemberBinding="{Binding DES_MANUF}"/>
+                            <GridViewColumn Header="Фармакологическая группа" Width="180"
+                                            DisplayMemberBinding="{Binding DES_GROUP}"/>
+                            <GridViewColumn Header="Применение" Width="300"
+                                            DisplayMemberBinding="{Binding DES_USE}"/>
+                            <GridViewColumn Header="Условия хранения" Width="120"
+                                            DisplayMemberBinding="{Binding DES_STORAGE}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Grid.Row="2" Height="50">
+            <TextBlock Text="Поиск по производителю, группе или применению:" Margin="5 0"></TextBlock>
+            <TextBox Height="20" Width="300" Margin="5 0" 
+                     Text="{Binding DescriptionFilter, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

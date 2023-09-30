@@ -1,0 +1,51 @@
+﻿<Window x:Class="PharmacyClient.Views.NewReceiptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="NewReceiptWindow" Height="350" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Text="Товарная позиция:"></TextBlock>
+        <TextBlock Grid.Row="1" Text="Поставщик:"></TextBlock>
+        <TextBlock Grid.Row="2" Text="Количество:"></TextBlock>
+        <TextBlock Grid.Row="3" Text="Дата:"></TextBlock>
+        <TextBlock Grid.Row="4" Text="Закупочная цена:"></TextBlock>
+        <ComboBox x:Name="cbDrugHeading" Grid.Column="1" Grid.Row="0" 
+                  DisplayMemberPath="DR_HEADING"
+                  IsTextSearchEnabled="True" IsEditable="True"></ComboBox>
+        <ComboBox x:Name="cbSupplierName" Grid.Column="1" Grid.Row="1" 
+                  DisplayMemberPath="SUP_NAME"
+                  IsTextSearchEnabled="True" IsEditable="True"></ComboBox>
+        <TextBox x:Name="tbReceiptAmount" Grid.Column="1" Grid.Row="2" 
+                 Text="{Binding R_AMOUNT}"></TextBox>
+        <DatePicker x:Name="dpReceiptDate"  Grid.Column="1" Grid.Row="3" 
+                    Height="30" Width="350" 
+                    HorizontalAlignment="Left" Margin="30 0"
+                    Text="{Binding R_DATE, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+        <TextBox x:Name="tbReceiptPrice" Grid.Column="1" Grid.Row="4" 
+                 Text="{Binding R_PRICE}"></TextBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.Row="5" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="btnSave" Content="Сохранить"
+                    IsDefault="True" Background="Gainsboro"
+                    Click="BtnSave_Click"></Button>
+            <Button x:Name="btnCancel" Content="Отмена"
+                    IsCancel="True" Background="Gainsboro"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

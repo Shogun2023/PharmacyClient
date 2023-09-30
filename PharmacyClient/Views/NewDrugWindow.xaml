@@ -1,0 +1,47 @@
+﻿<Window x:Class="PharmacyClient.Views.NewDrugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="NewDrugWindow" Height="450" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Text="Название препарата:"></TextBlock>
+        <TextBlock Grid.Row="1" Text="Код описания:"></TextBlock>
+        <TextBlock Grid.Row="2" Text="Лекарственная форма:"></TextBlock>
+        <TextBlock Grid.Row="3" Text="Дозировка:"></TextBlock>
+        <TextBlock Grid.Row="4" Text="Цена реализации:"></TextBlock>
+        <TextBox x:Name="tbDrugName" Grid.Column="1" Grid.Row="0" 
+                 MaxLength="50" Text="{Binding DR_NAME}"></TextBox>
+        <TextBox x:Name="tbDrugDescription" Grid.Column="1" Grid.Row="1" 
+                 Text="{Binding DR_DESCR}"></TextBox>
+        <TextBox x:Name="tbDrugForm" Grid.Column="1" Grid.Row="2" 
+                 MaxLength="100" Text="{Binding DR_FORM}"></TextBox>
+        <TextBox x:Name="tbDrugDose" Grid.Column="1" Grid.Row="3" 
+                 MaxLength="20" Text="{Binding DR_DOSE}"></TextBox>
+        <TextBox x:Name="tbDrugPrice" Grid.Column="1" Grid.Row="4" 
+                 Text="{Binding DR_PRICE}"></TextBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.Row="5" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="btnSave" Content="Сохранить"
+                    IsDefault="True" Background="Gainsboro"
+                    Click="BtnSave_Click"></Button>
+            <Button x:Name="btnCancel" Content="Отмена"
+                    IsCancel="True" Background="Gainsboro"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

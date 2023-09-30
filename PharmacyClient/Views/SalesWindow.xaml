@@ -1,0 +1,54 @@
+﻿<Window x:Class="PharmacyClient.Views.SalesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyClient.Views"
+        mc:Ignorable="d"
+        Title="Реализация" Height="530" Width="950">
+    <Grid Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button Content="Добавить" Command="{Binding AddSale}"></Button>
+            <Button Content="Редактировать" Command="{Binding EditSale}"></Button>
+            <Button Content="Удалить" Command="{Binding DeleteSale}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView ItemsSource="{Binding CollectionSalesDTO}" MaxHeight="400"
+                      SelectedItem="{Binding SelectedSaleDTO}">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Код реализации"
+                                            DisplayMemberBinding="{Binding SAL_ID}"/>
+                            <GridViewColumn Header="Препарат"
+                                            DisplayMemberBinding="{Binding SAL_DR_HEADING}"/>
+                            <GridViewColumn Header="Количество"
+                                            DisplayMemberBinding="{Binding SAL_AMOUNT}"/>
+                            <GridViewColumn Header="Дата"
+                                            DisplayMemberBinding="{Binding SAL_DATE, StringFormat=d}"/>
+                            <GridViewColumn Header="Стоимость"
+                                            DisplayMemberBinding="{Binding SAL_COST}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" Grid.Row="2" Height="50">
+            <TextBlock Text="Поиск по препарату или дате:" Margin="5 0"></TextBlock>
+            <TextBox Height="20" Width="300" Margin="5 0" 
+                     Text="{Binding SaleFilter, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
